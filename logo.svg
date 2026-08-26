@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Crack of All Trades badge logo: a winking cartoon handyman bust with a hard hat, in a circular emblem with a wrench behind the shoulders">
+  <circle cx="50" cy="50" r="47" fill="#12203a" stroke="#f2b632" stroke-width="4"/>
+  <circle cx="50" cy="50" r="40" fill="none" stroke="#ffd23f" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- wrench, behind shoulders -->
+  <line x1="18" y1="90" x2="58" y2="52" stroke="#f2b632" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="16" cy="92" r="6" fill="#f2b632" stroke="#181410" stroke-width="2.5"/>
+  <circle cx="60" cy="50" r="6" fill="#f2b632" stroke="#181410" stroke-width="2.5"/>
+
+  <!-- shoulders / jumpsuit -->
+  <path d="M20 84 Q25 56 50 54 Q75 56 80 84 Z" fill="#1d3a5f" stroke="#181410" stroke-width="3"/>
+  <path d="M42 58 L50 70 L58 58" fill="none" stroke="#f2e6c8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- head -->
+  <circle cx="50" cy="38" r="19" fill="#ffd23f" stroke="#181410" stroke-width="3"/>
+  <path d="M31 31 Q50 8 69 31 Q69 19 50 16 Q31 19 31 31 Z" fill="#f2b632" stroke="#181410" stroke-width="3"/>
+
+  <!-- face: wink + smile -->
+  <circle cx="43" cy="41" r="2.2" fill="#181410"/>
+  <path d="M54 39 Q58 35 62 39" fill="none" stroke="#181410" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M41 47 Q50 54 58 47" fill="none" stroke="#181410" stroke-width="3" stroke-linecap="round"/>
+</svg>

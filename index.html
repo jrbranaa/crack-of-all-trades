@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crack of All Trades — Handyman Services</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<style>
+  :root {
+    --navy-deep: #12203a;
+    --navy-mid: #1d3a5f;
+    --navy-line: #2c4a72;
+    --gold: #f2b632;
+    --gold-bright: #ffd23f;
+    --cream: #f2e6c8;
+    --cream-dark: #e2d1a4;
+    --red: #b3312c;
+    --ink: #181410;
+
+    --font-display: Futura, "Century Gothic", "Trebuchet MS", sans-serif;
+    --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mono: "Courier New", Courier, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--navy-deep);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { max-width: 100%; }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--navy-deep);
+    border-bottom: 3px solid var(--gold);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    color: var(--gold-bright);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand .mark {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--cream);
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible {
+    border-color: var(--gold-bright);
+    color: var(--gold-bright);
+    outline: none;
+  }
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--red);
+    color: var(--cream);
+    padding: 9px 16px;
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .nav-cta:hover, .nav-cta:focus-visible { transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); outline: none; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-conic-gradient(from 0deg at 50% 38%,
+        var(--navy-mid) 0deg 9deg,
+        var(--navy-deep) 9deg 18deg);
+    padding: 64px 24px 90px;
+    text-align: center;
+    border-bottom: 6px solid var(--gold);
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 38%, transparent 0%, transparent 40%, var(--navy-deep) 88%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .eyebrow-stamp {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+    background: var(--gold-bright);
+    padding: 5px 12px;
+    border: 2px solid var(--ink);
+    transform: rotate(-2deg);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    color: var(--cream);
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-shadow: 4px 4px 0 var(--red);
+  }
+  .hero .sub {
+    font-family: var(--font-display);
+    color: var(--gold-bright);
+    font-size: clamp(1rem, 2.4vw, 1.35rem);
+    letter-spacing: 0.04em;
+    margin-top: 14px;
+  }
+  .mascot-frame {
+    margin: 34px auto 8px;
+    max-width: 300px;
+  }
+  .mascot-frame-crew {
+    max-width: 560px;
+  }
+  .hero .tagline {
+    color: var(--cream);
+    opacity: 0.85;
+    font-size: 1rem;
+    max-width: 46ch;
+    margin: 18px auto 0;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+  .btn {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    text-decoration: none;
+    padding: 13px 22px;
+    border: 2px solid var(--ink);
+    display: inline-block;
+  }
+  .btn-primary { background: var(--red); color: var(--cream); box-shadow: 4px 4px 0 var(--ink); }
+  .btn-secondary { background: var(--gold-bright); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+  .btn:hover, .btn:focus-visible { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); outline: none; }
+
+  /* ---------- Torn edge ---------- */
+  .torn {
+    height: 26px;
+    background: var(--cream);
+    clip-path: polygon(
+      0% 100%, 0% 40%, 4% 70%, 8% 20%, 12% 60%, 16% 10%, 20% 55%, 24% 15%,
+      28% 65%, 32% 25%, 36% 70%, 40% 20%, 44% 60%, 48% 15%, 52% 55%, 56% 10%,
+      60% 60%, 64% 20%, 68% 65%, 72% 25%, 76% 70%, 80% 20%, 84% 60%, 88% 15%,
+      92% 55%, 96% 20%, 100% 60%, 100% 100%
+    );
+  }
+
+  /* ---------- Main paper body ---------- */
+  main { background: var(--cream); }
+  section { padding: 64px 0; }
+  .section-head { text-align: center; margin-bottom: 40px; }
+  .section-head .kicker {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    border-top: 2px solid var(--navy-mid);
+    border-bottom: 2px solid var(--navy-mid);
+    padding: 3px 0;
+  }
+  .section-head h2 {
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    color: var(--navy-deep);
+    margin-top: 12px;
+  }
+
+  /* ---------- Services ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+  }
+  .card {
+    background: #fbf5e4;
+    border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--navy-mid);
+    padding: 22px 20px;
+  }
+  .card .icon {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    border: 2px solid var(--ink);
+    display: grid;
+    place-items: center;
+    margin-bottom: 14px;
+  }
+  .card h3 {
+    font-size: 1.05rem;
+    color: var(--navy-deep);
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+  }
+  .card p { font-size: 0.92rem; line-height: 1.5; margin: 0; color: #3a3226; }
+
+  /* ---------- About ---------- */
+  .about {
+    background: var(--navy-deep);
+    background-image:
+      linear-gradient(var(--navy-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--navy-line) 1px, transparent 1px);
+    background-size: 26px 26px;
+    color: var(--cream);
+  }
+  .about .section-head .kicker { color: var(--gold-bright); border-color: var(--gold-bright); }
+  .about .section-head h2 { color: var(--cream); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .about-copy p { line-height: 1.7; margin: 0 0 16px; }
+  .about-copy p:last-child { margin-bottom: 0; }
+  .stamp-panel {
+    background: var(--cream);
+    border: 3px solid var(--gold-bright);
+    padding: 26px;
+    color: var(--ink);
+    position: relative;
+    transform: rotate(1.2deg);
+  }
+  .stamp-panel h3 {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+    text-align: center;
+    border-bottom: 2px dashed var(--ink);
+    padding-bottom: 10px;
+  }
+  .badge-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-family: var(--font-mono); font-size: 0.82rem; }
+  .badge-list li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dotted var(--cream-dark); padding-bottom: 8px; }
+  .badge-list li:last-child { border-bottom: none; }
+  .badge-list .status { color: var(--navy-mid); font-weight: bold; }
+
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-panel {
+    background: #fbf5e4;
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0 var(--navy-mid);
+    padding: 36px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 36px;
+  }
+  @media (max-width: 760px) {
+    .contact-panel { grid-template-columns: 1fr; padding: 26px; }
+  }
+  .placeholder-note {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    background: var(--gold-bright);
+    color: var(--ink);
+    border: 2px dashed var(--ink);
+    padding: 10px 14px;
+    margin-bottom: 24px;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    color: var(--navy-deep);
+  }
+  .field input, .field textarea {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    border: 2px solid var(--ink);
+    background: #fff;
+    color: var(--ink);
+  }
+  .field input:focus, .field textarea:focus {
+    outline: 3px solid var(--navy-mid);
+    outline-offset: 1px;
+  }
+  .field textarea { resize: vertical; min-height: 90px; font-family: var(--font-body); }
+
+  .info-block h3 {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .info-rows { list-style: none; margin: 0 0 22px; padding: 0; font-size: 0.95rem; display: grid; gap: 12px; }
+  .info-rows li strong {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-mid);
+    margin-bottom: 2px;
+  }
+  .seal {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    color: var(--navy-deep);
+    border: 2px solid var(--navy-deep);
+    border-radius: 50%;
+    width: 96px; height: 96px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-8deg);
+    padding: 8px;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #confirm {
+    margin-top: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--navy-mid);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy-deep);
+    color: var(--cream-dark);
+    text-align: center;
+    padding: 30px 24px;
+    border-top: 6px solid var(--gold);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+  footer .foot-brand {
+    font-family: var(--font-display);
+    color: var(--gold-bright);
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .btn, .nav-cta { transition: transform 0.08s ease, box-shadow 0.08s ease; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-row">
+    <a class="brand" href="#top">
+      <img class="mark" src="logo.svg" alt="" width="30" height="30">
+      CRACK OF ALL TRADES
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Request Service</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow-stamp">C.O.A.T. Industries &middot; Est. Today</span>
+    <h1>CRACK OF ALL<br>TRADES</h1>
+    <p class="sub">HANDYMAN SERVICES FOR THE MODERN HOMESTEAD</p>
+
+    <div class="mascot-frame mascot-frame-crew">
+      <svg viewBox="0 0 640 300" role="img" aria-label="Three cartoon handymen — dad and his two sons, from tallest to shortest — bending over to work in the same pose, each giving a thumbs up, each with a sliver of his lower back peeking above his waistband">
+        <defs>
+          <g id="crew-figure">
+            <ellipse cx="150" cy="272" rx="120" ry="16" fill="#0c1626" opacity="0.5"/>
+
+            <!-- back leg -->
+            <rect x="70" y="190" width="34" height="80" rx="16" fill="#1d3a5f" stroke="#181410" stroke-width="4"/>
+            <ellipse cx="87" cy="272" rx="22" ry="12" fill="#6b4a2b" stroke="#181410" stroke-width="4"/>
+
+            <!-- front leg -->
+            <rect x="150" y="196" width="36" height="76" rx="16" fill="#24466e" stroke="#181410" stroke-width="4"/>
+            <ellipse cx="168" cy="272" rx="24" ry="13" fill="#7a5730" stroke="#181410" stroke-width="4"/>
+
+            <!-- pants / hips, bent forward -->
+            <path d="M70 195 Q80 130 160 128 Q225 128 210 195 Q160 215 70 195 Z" fill="#1d3a5f" stroke="#181410" stroke-width="4"/>
+            <!-- tool belt -->
+            <path d="M78 170 Q145 190 205 168" fill="none" stroke="#f2b632" stroke-width="12" stroke-linecap="round"/>
+            <circle cx="140" cy="182" r="7" fill="#181410"/>
+
+            <!-- peek of skin above waistband (the gag, kept minimal) -->
+            <path d="M118 130 Q140 118 165 128 Q150 140 118 130 Z" fill="#ffd23f" stroke="#181410" stroke-width="3"/>
+
+            <!-- shirt riding up -->
+            <path d="M95 78 Q90 118 118 132 Q160 145 205 118 Q222 100 205 76 Q150 58 95 78 Z" fill="#f2e6c8" stroke="#181410" stroke-width="4"/>
+            <path d="M108 84 Q106 108 122 122" fill="none" stroke="#d8c69a" stroke-width="3"/>
+
+            <!-- arm reaching down to wrench -->
+            <path d="M205 95 Q245 118 244 160" fill="none" stroke="#f2e6c8" stroke-width="20" stroke-linecap="round"/>
+            <path d="M205 95 Q245 118 244 160" fill="none" stroke="#181410" stroke-width="4" stroke-linecap="round"/>
+            <g transform="translate(230,160) rotate(25)">
+              <rect x="-6" y="0" width="12" height="34" rx="3" fill="#b3312c" stroke="#181410" stroke-width="3"/>
+              <path d="M-10 0 Q0 -14 10 0 Q0 6 -10 0 Z" fill="#b3312c" stroke="#181410" stroke-width="3"/>
+            </g>
+
+            <!-- arm raised, thumbs up -->
+            <path d="M98 82 Q56 70 46 34" fill="none" stroke="#f2e6c8" stroke-width="20" stroke-linecap="round"/>
+            <path d="M98 82 Q56 70 46 34" fill="none" stroke="#181410" stroke-width="4" stroke-linecap="round"/>
+            <g transform="translate(40,26)">
+              <circle r="14" fill="#ffd23f" stroke="#181410" stroke-width="4"/>
+              <rect x="-4" y="-16" width="8" height="14" rx="4" fill="#ffd23f" stroke="#181410" stroke-width="3"/>
+            </g>
+
+            <!-- head, turned back with a wink -->
+            <g transform="translate(150,55) rotate(-8)">
+              <circle r="40" fill="#ffd23f" stroke="#181410" stroke-width="4"/>
+              <path d="M-38 -14 Q0 -46 38 -14 Q38 -30 0 -34 Q-38 -30 -38 -14 Z" fill="#f2b632" stroke="#181410" stroke-width="4"/>
+              <circle cx="-14" cy="4" r="4" fill="#181410"/>
+              <path d="M8 2 Q16 -4 24 2" fill="none" stroke="#181410" stroke-width="3" stroke-linecap="round"/>
+              <path d="M-16 18 Q0 30 16 18" fill="none" stroke="#181410" stroke-width="4" stroke-linecap="round"/>
+            </g>
+          </g>
+        </defs>
+
+        <!-- Dad: full size, anchored at original position -->
+        <use href="#crew-figure" transform="translate(0,272) scale(1) translate(0,-272)"/>
+        <!-- Gavin: scaled down, shifted right, ground line preserved -->
+        <use href="#crew-figure" transform="translate(271,272) scale(0.7) translate(0,-272)"/>
+        <!-- Parker: smallest, shifted further right, ground line preserved -->
+        <use href="#crew-figure" transform="translate(463,272) scale(0.58) translate(0,-272)"/>
+
+        <!-- comedic callout, covers the whole crew -->
+        <g font-family="Courier New, monospace" fill="#12203a">
+          <line x1="330" y1="145" x2="420" y2="55" stroke="#12203a" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="490" y="47" font-size="15" font-weight="bold" text-anchor="middle">IT RUNS IN</text>
+          <text x="490" y="65" font-size="15" font-weight="bold" text-anchor="middle">THE FAMILY</text>
+        </g>
+      </svg>
+    </div>
+
+    <p class="tagline">Me, my sons Gavin and Parker, and a family trait we can't shake: no matter the job, somebody's lower back makes an appearance. Three handymen, five trades between us, one running joke. Book with confidence — or at least with a laugh.</p>
+
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#contact">Request Service</a>
+      <a class="btn btn-secondary" href="#services">View Services</a>
+    </div>
+  </div>
+</header>
+
+<div class="torn" aria-hidden="true"></div>
+
+<main>
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">The Skill Set</span>
+        <h2>Five Trades. Three Guys. Zero Guarantees About Anyone's Waistband.</h2>
+      </div>
+      <div class="services-grid">
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2z"/></svg>
+          </div>
+          <h3>General Repairs &amp; Carpentry</h3>
+          <p>Wobbly shelves, busted doors, squeaky hinges, small builds. If it's broken, bent, or built wrong, we'll square it away.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </div>
+          <h3>Minor Plumbing &amp; Electrical</h3>
+          <p>Leaky faucets, running toilets, outlet swaps, light fixtures. Bigger jobs get referred to a licensed pro — no shortcuts on safety.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M18 3 6 15v4h4L22 7l-4-4z"/><path d="M6 19c-1.5 1.5-3 1-4 2 1-2.5.5-4 2-5.5"/></svg>
+          </div>
+          <h3>Painting &amp; Drywall</h3>
+          <p>Patch it, prime it, paint it. Sharp walls, clean lines, no drips left behind — even if we leave with paint somewhere we shouldn't.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+          </div>
+          <h3>Assembly &amp; Installation</h3>
+          <p>Furniture, TV mounts, shelving. If it arrived in a flat box with forty mystery screws, we've already built it twice — probably while arguing about the instructions.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M2 8.5a16 16 0 0 1 20 0M5.5 12a11 11 0 0 1 13 0M9 15.5a6 6 0 0 1 6 0"/><circle cx="12" cy="19" r="1.4" fill="#181410"/></svg>
+          </div>
+          <h3>Smart Home Tech</h3>
+          <p>Video doorbells, smart locks, thermostats, and dead wifi zones. We'll get your house talking to your phone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">A Message From Your Handyman</span>
+        <h2>Behind the Name</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>It started with me. Turns out I'm a polymath — genuinely good at carpentry, plumbing, painting, wiring, small appliance repair, and, apparently, exposing my lower back to the neighborhood no matter what I'm doing. Bending down. Standing up. Simply existing near a tool belt. It happens.</p>
+          <p>Then my sons Gavin and Parker started working alongside me, and it turns out the trait runs in the family. All three of us. Every job. I've made peace with it. Our chiropractor is doing great business.</p>
+          <p>What you actually get: three sets of hands, real skill across five trades, fair pricing, and a crew that shows up on time and finishes the job right — with the kind of good humor you need when it's not just one guy bending over, but three of us, in a row, doing the exact same thing.</p>
+        </div>
+        <div class="stamp-panel">
+          <h3>Field Credentials</h3>
+          <ul class="badge-list">
+            <li><span>Crew</span><span class="status">Dad, Gavin &amp; Parker</span></li>
+            <li><span>Trades mastered</span><span class="status">5</span></li>
+            <li><span>Punctuality</span><span class="status">Reliable</span></li>
+            <li><span>Sense of humor</span><span class="status">Mandatory</span></li>
+            <li><span>Waistband compliance</span><span class="status">A family tradition</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Get In Touch</span>
+        <h2>Request Service</h2>
+      </div>
+
+      <div class="contact-panel">
+        <div>
+          <p class="placeholder-note">⚑ Contact details on this page are placeholders — swap in your real phone, email, and service area before this site goes live.</p>
+          <form id="quote-form">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel">
+            </div>
+            <div class="field">
+              <label for="job">What needs fixing?</label>
+              <textarea id="job" name="job" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Request</button>
+            <p id="confirm" role="status"></p>
+          </form>
+        </div>
+
+        <div class="info-block">
+          <h3>Direct Contact</h3>
+          <ul class="info-rows">
+            <li><strong>Phone</strong>(555) 010-2024 — placeholder</li>
+            <li><strong>Email</strong>hello@crackofalltrades.example — placeholder</li>
+            <li><strong>Service Area</strong>[Your City] &amp; surrounding areas — placeholder</li>
+            <li><strong>Hours</strong>Mon–Sat, 8AM–6PM — placeholder</li>
+          </ul>
+          <div class="seal">100%<br>Guaranteed*</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-brand">CRACK OF ALL TRADES</div>
+  <div>&copy; 2026 Crack of All Trades. All jokes intentional. *Guarantee is a figure of speech, not a legal instrument. Not affiliated with any vault, bureau, or wasteland.</div>
+</footer>
+
+<script>
+  document.getElementById('quote-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var job = document.getElementById('job').value.trim();
+    var subject = encodeURIComponent('Service request from ' + (name || 'a customer'));
+    var body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n\n' +
+      'What needs fixing:\n' + job
+    );
+    window.location.href = 'mailto:hello@crackofalltrades.example?subject=' + subject + '&body=' + body;
+    document.getElementById('confirm').textContent = 'Opening your email client to send this request...';
+  });
+</script>
+</body>
+</html>
