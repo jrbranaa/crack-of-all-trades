@@ -292,6 +292,35 @@
   }
   .card p { font-size: 0.92rem; line-height: 1.5; margin: 0; color: #3a3226; }
 
+  /* ---------- Advisor callout ---------- */
+  .advisor {
+    margin-top: 34px;
+    background: var(--navy-deep);
+    color: var(--cream);
+    border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--bronze);
+    padding: 28px 26px;
+  }
+  .advisor-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+    background: var(--gold-bright);
+    border: 2px solid var(--ink);
+    padding: 4px 10px;
+    transform: rotate(-1.5deg);
+    margin-bottom: 14px;
+  }
+  .advisor h3 {
+    font-size: clamp(1.15rem, 3vw, 1.4rem);
+    color: var(--gold-bright);
+    margin-bottom: 10px;
+  }
+  .advisor p { font-size: 0.95rem; line-height: 1.6; margin: 0; max-width: 68ch; }
+
   /* ---------- About ---------- */
   .about {
     background: var(--navy-deep);
@@ -493,7 +522,7 @@
 
     <p class="sub">Handyman Services for the Modern Homestead</p>
 
-    <p class="tagline">Me, my sons Gavin and Parker, and a family trait we can't shake: no matter the job, somebody's lower back makes an appearance. Three handymen, five trades between us, one running joke. Book with confidence — or at least with a laugh.</p>
+    <p class="tagline">Me, my sons Gavin and Parker, and a family trait we can't shake: no matter the job, somebody's lower back makes an appearance. Three handymen, three trades between us, one running joke. Book with confidence — or at least with a laugh.</p>
 
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#contact">Request Service</a>
@@ -509,44 +538,36 @@
     <div class="wrap">
       <div class="section-head">
         <span class="kicker">The Skill Set</span>
-        <h2>Five Trades. Three Guys. Zero Guarantees About Anyone's Waistband.</h2>
+        <h2>Three Trades. Three Guys. Zero Guarantees About Anyone's Waistband.</h2>
       </div>
       <div class="services-grid">
         <div class="card">
           <div class="icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2z"/></svg>
-          </div>
-          <h3>General Repairs &amp; Carpentry</h3>
-          <p>Wobbly shelves, busted doors, squeaky hinges, small builds. If it's broken, bent, or built wrong, we'll square it away.</p>
-        </div>
-        <div class="card">
-          <div class="icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          </div>
-          <h3>Minor Plumbing &amp; Electrical</h3>
-          <p>Leaky faucets, running toilets, outlet swaps, light fixtures. Bigger jobs get referred to a licensed pro — no shortcuts on safety.</p>
-        </div>
-        <div class="card">
-          <div class="icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M18 3 6 15v4h4L22 7l-4-4z"/><path d="M6 19c-1.5 1.5-3 1-4 2 1-2.5.5-4 2-5.5"/></svg>
-          </div>
-          <h3>Painting &amp; Drywall</h3>
-          <p>Patch it, prime it, paint it. Sharp walls, clean lines, no drips left behind — even if we leave with paint somewhere we shouldn't.</p>
-        </div>
-        <div class="card">
-          <div class="icon">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
-          </div>
-          <h3>Assembly &amp; Installation</h3>
-          <p>Furniture, TV mounts, shelving. If it arrived in a flat box with forty mystery screws, we've already built it twice — probably while arguing about the instructions.</p>
-        </div>
-        <div class="card">
-          <div class="icon">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M2 8.5a16 16 0 0 1 20 0M5.5 12a11 11 0 0 1 13 0M9 15.5a6 6 0 0 1 6 0"/><circle cx="12" cy="19" r="1.4" fill="#181410"/></svg>
           </div>
-          <h3>Smart Home Tech</h3>
-          <p>Video doorbells, smart locks, thermostats, and dead wifi zones. We'll get your house talking to your phone.</p>
+          <h3>Home Tech &amp; Wi-Fi</h3>
+          <p>Video doorbells, smart locks, thermostats, mesh wifi, and the laptop that won't connect to anything. Networking, device setup, and dead-zone hunting — we'll get your house and your gadgets talking again.</p>
         </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-4l2-5h14l2 5v4h-2M5 13h14"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/><path d="M9 17h6"/></svg>
+          </div>
+          <h3>Auto Repair</h3>
+          <p>Brakes, batteries, fluids, belts, and that noise you've been ignoring for three weeks. Routine maintenance and honest diagnostics — minus the upsell. Bigger jobs get referred to a trusted shop.</p>
+        </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2z"/></svg>
+          </div>
+          <h3>Construction</h3>
+          <p>The whole home-improvement umbrella: carpentry, minor plumbing and electrical, painting and drywall, furniture assembly, and installs. If it's broken, bent, or built wrong, we'll square it away. Licensed pros for anything bigger — no shortcuts on safety.</p>
+        </div>
+      </div>
+
+      <div class="advisor">
+        <span class="advisor-badge">Also Available</span>
+        <h3>Bring Backup to the Estimate</h3>
+        <p>Getting a quote from another contractor? Have one of us there when they walk the job. A second set of trained eyes on the scope, the price, and the "you'll want to replace the whole thing" pitch — so you know what's actually necessary before you sign anything. No sales quota, no cut of their job. Just someone in your corner who's held the same tools.</p>
       </div>
     </div>
   </section>
@@ -559,15 +580,15 @@
       </div>
       <div class="about-grid">
         <div class="about-copy">
-          <p>It started with me. Turns out I'm a polymath — genuinely good at carpentry, plumbing, painting, wiring, small appliance repair, and, apparently, exposing my lower back to the neighborhood no matter what I'm doing. Bending down. Standing up. Simply existing near a tool belt. It happens.</p>
+          <p>It started with me. Turns out I'm a polymath — genuinely good at home tech, auto repair, and every corner of the construction trades, and, apparently, exposing my lower back to the neighborhood no matter what I'm doing. Bending down. Standing up. Simply existing near a tool belt. It happens.</p>
           <p>Then my sons Gavin and Parker started working alongside me, and it turns out the trait runs in the family. All three of us. Every job. I've made peace with it. Our chiropractor is doing great business.</p>
-          <p>What you actually get: three sets of hands, real skill across five trades, fair pricing, and a crew that shows up on time and finishes the job right — with the kind of good humor you need when it's not just one guy bending over, but three of us, in a row, doing the exact same thing.</p>
+          <p>What you actually get: three sets of hands, real skill across three trades, fair pricing, and a crew that shows up on time and finishes the job right — with the kind of good humor you need when it's not just one guy bending over, but three of us, in a row, doing the exact same thing.</p>
         </div>
         <div class="stamp-panel">
           <h3>Field Credentials</h3>
           <ul class="badge-list">
             <li><span>Crew</span><span class="status">Dad, Gavin &amp; Parker</span></li>
-            <li><span>Trades mastered</span><span class="status">5</span></li>
+            <li><span>Trades mastered</span><span class="status">3</span></li>
             <li><span>Punctuality</span><span class="status">Reliable</span></li>
             <li><span>Sense of humor</span><span class="status">Mandatory</span></li>
             <li><span>Waistband compliance</span><span class="status">A family tradition</span></li>
