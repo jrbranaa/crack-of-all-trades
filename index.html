@@ -142,7 +142,6 @@
     background: var(--parchment);
     padding: 56px 24px 76px;
     text-align: center;
-    border-bottom: 6px solid var(--gold);
   }
   /* sepia vignette — the darkened, distressed poster edge */
   .hero::before {
@@ -182,19 +181,13 @@
     font-size: clamp(1rem, 2.4vw, 1.35rem);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-top: 4px;
+    margin-top: 28px;
   }
-  /* framed like the poster: a distressed double bronze rule around the art */
+  /* the hero banner art, floated on a soft drop shadow */
   .banner-frame {
     margin: 8px auto 4px;
     max-width: 720px;
-    padding: 10px;
-    background: var(--parchment);
-    border: 2px solid var(--bronze);
-    box-shadow:
-      0 0 0 3px var(--parchment),
-      0 0 0 5px var(--gold),
-      0 16px 34px rgba(43, 35, 32, 0.30);
+    box-shadow: 0 16px 34px rgba(43, 35, 32, 0.30);
   }
   .banner-frame img { display: block; }
   .hero .tagline {
@@ -489,7 +482,7 @@
     .nav-cta { padding: 8px 12px; }
     .hero { padding: 40px 16px 60px; }
     .eyebrow-stamp { letter-spacing: 0.08em; white-space: normal; }
-    .banner-frame { padding: 7px; }
+    .banner-frame { max-width: 100%; }
   }
 </style>
 </head>
