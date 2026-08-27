@@ -361,6 +361,36 @@
     .about-grid { grid-template-columns: 1fr; }
   }
 
+  /* ---------- Community creed ---------- */
+  .creed {
+    margin-top: 40px;
+    background: var(--cream);
+    color: var(--ink);
+    border: 3px solid var(--gold-bright);
+    box-shadow: 6px 6px 0 var(--bronze);
+    padding: 30px 28px;
+  }
+  .creed-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy-deep);
+    background: var(--gold-bright);
+    border: 2px solid var(--ink);
+    padding: 4px 10px;
+    transform: rotate(-1.5deg);
+    margin-bottom: 14px;
+  }
+  .creed h3 {
+    font-size: clamp(1.15rem, 3vw, 1.45rem);
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+  .creed p { line-height: 1.7; margin: 0 0 14px; max-width: 68ch; }
+  .creed p:last-child { margin-bottom: 0; }
+
   /* ---------- Contact ---------- */
   .contact-panel {
     background: #fbf5e4;
@@ -588,6 +618,14 @@
             <li><span>Waistband compliance</span><span class="status">A family tradition</span></li>
           </ul>
         </div>
+      </div>
+
+      <div class="creed">
+        <span class="creed-badge">Where We Stand</span>
+        <h3>A Commitment to the Neighborhood</h3>
+        <p>A handshake ought to mean something. We think neighbors should be able to trust the people they let into their homes — and trust each other to point them toward folks who do right by them.</p>
+        <p>We show up when we say we will, quote what the job actually costs, and tell you plainly when something isn't worth fixing. No scare tactics, no padded invoices, no work you didn't ask for.</p>
+        <p>And when someone's running a hustle on this town — cutting corners, preying on people who don't know better, disappearing with a deposit — we're not going to look the other way. That kind of thing has no business here, and we'll happily help see it run out.</p>
       </div>
     </div>
   </section>
