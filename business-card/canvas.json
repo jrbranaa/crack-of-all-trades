@@ -1,0 +1,10 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 336, "h": 192, "title": "Front — Emblem", "print": "fixed" },
+    { "file": "Back.dc.html", "x": 456, "y": 0, "w": 336, "h": 192, "title": "Back — Contact", "print": "fixed" }
+  ],
+  "annotations": [
+    { "id": "trim-note", "x": 0, "y": -104, "w": 792, "text": "Business card template — US trim size 3.5 in × 2 in (336 × 192 px at 96 dpi). Front is the emblem full-bleed; back carries contact info. Replace every [BRACKETED] field. For a print shop, add 0.125 in bleed on each edge and keep text ≥ 0.125 in inside the trim." }
+  ],
+  "launch": { "view": "canvas" }
+}
