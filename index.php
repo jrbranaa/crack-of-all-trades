@@ -1,3 +1,71 @@
+<?php
+require __DIR__ . '/config.php';
+require __DIR__ . '/vendor/phpmailer/Exception.php';
+require __DIR__ . '/vendor/phpmailer/PHPMailer.php';
+require __DIR__ . '/vendor/phpmailer/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+$name = '';
+$phone = '';
+$job = '';
+$confirmMessage = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
+    $name = trim($_POST['name'] ?? '');
+    $phone = trim($_POST['phone'] ?? '');
+    $job = trim($_POST['job'] ?? '');
+
+    if ($name === '' || $job === '') {
+        $confirmMessage = 'Please fill in your name and what needs fixing.';
+    } else {
+        $entry = [
+            'name' => $name,
+            'phone' => $phone,
+            'job' => $job,
+            'submitted_at' => date('c'),
+        ];
+
+        $submissionsFile = __DIR__ . '/submissions.json';
+        $submissions = [];
+        if (file_exists($submissionsFile)) {
+            $existing = json_decode(file_get_contents($submissionsFile), true);
+            if (is_array($existing)) {
+                $submissions = $existing;
+            }
+        }
+        $submissions[] = $entry;
+        file_put_contents($submissionsFile, json_encode($submissions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+        try {
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = SMTP_HOST;
+            $mail->SMTPAuth = true;
+            $mail->Username = SMTP_USERNAME;
+            $mail->Password = SMTP_PASSWORD;
+            $mail->SMTPSecure = SMTP_ENCRYPTION;
+            $mail->Port = SMTP_PORT;
+
+            $mail->setFrom(SMTP_FROM_EMAIL, SMTP_FROM_NAME);
+            $mail->addAddress(CONTACT_EMAIL);
+
+            $mail->Subject = 'Service request from ' . $name;
+            $mail->Body = "Name: $name\nPhone: $phone\n\nWhat needs fixing:\n$job";
+            $mail->send();
+
+            $confirmMessage = "Thanks, $name — your request has been received. We'll be in touch soon.";
+        } catch (Exception $e) {
+            $confirmMessage = "Thanks, $name — your request was saved. We had trouble sending the confirmation email, but we'll still see your request.";
+        }
+
+        $name = '';
+        $phone = '';
+        $job = '';
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -404,16 +472,6 @@
   @media (max-width: 760px) {
     .contact-panel { grid-template-columns: 1fr; padding: 26px; }
   }
-  .placeholder-note {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.03em;
-    background: var(--gold-bright);
-    color: var(--ink);
-    border: 2px dashed var(--ink);
-    padding: 10px 14px;
-    margin-bottom: 24px;
-  }
   .field { margin-bottom: 16px; }
   .field label {
     display: block;
@@ -620,30 +678,30 @@
 
       <div class="contact-panel">
         <div>
-          <p class="placeholder-note">⚑ Contact details on this page are placeholders — swap in your real phone, email, and service area before this site goes live.</p>
-          <form id="quote-form">
+          <form id="quote-form" method="post" action="#contact">
+            <input type="hidden" name="quote_form" value="1">
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" name="name" type="text" required>
+              <input id="name" name="name" type="text" value="<?= htmlspecialchars($name) ?>" required>
             </div>
             <div class="field">
               <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel">
+              <input id="phone" name="phone" type="tel" value="<?= htmlspecialchars($phone) ?>">
             </div>
             <div class="field">
               <label for="job">What needs fixing?</label>
-              <textarea id="job" name="job" required></textarea>
+              <textarea id="job" name="job" required><?= htmlspecialchars($job) ?></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Request</button>
-            <p id="confirm" role="status"></p>
+            <p id="confirm" role="status"><?= htmlspecialchars($confirmMessage) ?></p>
           </form>
         </div>
 
         <div class="info-block">
           <h3>Direct Contact</h3>
           <ul class="info-rows">
-            <li><strong>Phone</strong>(555) 010-2024 — placeholder</li>
-            <li><strong>Email</strong>hello@crackofalltrades.example — placeholder</li>
+            <li><strong>Phone</strong>916.999.9417</li>
+            <li><strong>Email</strong>hello@crackofalltrades.com</li>
             <li><strong>Service Area</strong>[Your City] &amp; surrounding areas — placeholder</li>
             <li><strong>Hours</strong>Mon–Sat, 8AM–6PM — placeholder</li>
           </ul>
@@ -658,21 +716,5 @@
   <div>&copy; 2026 Crack of All Trades. All jokes intentional. Not affiliated with any vault, bureau, or wasteland.</div>
 </footer>
 
-<script>
-  document.getElementById('quote-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = document.getElementById('name').value.trim();
-    var phone = document.getElementById('phone').value.trim();
-    var job = document.getElementById('job').value.trim();
-    var subject = encodeURIComponent('Service request from ' + (name || 'a customer'));
-    var body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Phone: ' + phone + '\n\n' +
-      'What needs fixing:\n' + job
-    );
-    window.location.href = 'mailto:hello@crackofalltrades.example?subject=' + subject + '&body=' + body;
-    document.getElementById('confirm').textContent = 'Opening your email client to send this request...';
-  });
-</script>
 </body>
 </html>
