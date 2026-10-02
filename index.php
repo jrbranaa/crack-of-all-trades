@@ -702,8 +702,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
           <ul class="info-rows">
             <li><strong>Phone</strong>916.999.9417</li>
             <li><strong>Email</strong>hello@crackofalltrades.com</li>
-            <li><strong>Service Area</strong>[Your City] &amp; surrounding areas — placeholder</li>
-            <li><strong>Hours</strong>Mon–Sat, 8AM–6PM — placeholder</li>
+            <li><strong>Service Area</strong>Cameron Park &amp; surrounding areas</li>
+            <li><strong>Hours</strong>Mon–Sat, 8AM–6PM</li>
           </ul>
         </div>
       </div>
