@@ -72,8 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Crack of All Trades — Handyman Services</title>
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="emblem.jpg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   :root {
     /* palette pulled from the banner_logo poster: warm sepia parchment,
