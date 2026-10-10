@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
     $job = trim($_POST['job'] ?? '');
 
     if ($name === '' || $job === '') {
-        $confirmMessage = 'Please fill in your name and what needs fixing.';
+        $confirmMessage = 'Please fill in your name and what\'s on your list.';
     } else {
         $entry = [
             'name' => $name,
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
             $mail->addAddress(CONTACT_EMAIL);
 
             $mail->Subject = 'Service request from ' . $name;
-            $mail->Body = "Name: $name\nPhone: $phone\n\nWhat needs fixing:\n$job";
+            $mail->Body = "Name: $name\nPhone: $phone\n\nWhat's on the list:\n$job";
             $mail->send();
 
             $confirmMessage = "Thanks, $name — your request has been received. We'll be in touch soon.";
@@ -382,6 +382,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
   }
   .advisor p { font-size: 0.95rem; line-height: 1.6; margin: 0; max-width: 68ch; }
 
+  /* ---------- Maintenance plan ---------- */
+  .plan {
+    margin-top: 34px;
+    background: #fbf5e4;
+    border: 2px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--navy-mid);
+    padding: 28px 26px;
+  }
+  .plan h3 {
+    font-size: clamp(1.15rem, 3vw, 1.4rem);
+    color: var(--navy-deep);
+    margin-bottom: 10px;
+  }
+  .plan > p { font-size: 0.95rem; line-height: 1.6; margin: 0 0 18px; max-width: 68ch; color: #3a3226; }
+  .plan-list {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px 24px;
+  }
+  .plan-list li { font-size: 0.92rem; line-height: 1.5; color: #3a3226; border-left: 3px solid var(--gold-bright); padding-left: 12px; }
+  .plan-list strong { display: block; color: var(--navy-deep); }
+  .plan .plan-note { font-size: 0.88rem; margin: 0; color: #3a3226; }
+
   /* ---------- About ---------- */
   .about {
     background: var(--navy-deep);
@@ -584,7 +610,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
 
     <p class="sub">Handyman Services for the Modern Homestead</p>
 
-    <p class="tagline">A father, his sons, and a family trait we can't shake: no matter the job, somebody's lower back makes an appearance. One family, six trades between us, one running joke. Book with confidence — or at least with a laugh.</p>
+    <p class="tagline">A family-owned handyman service serving Cameron Park and the surrounding area. One call for everything on your list, honest pricing, and work done right the first time.</p>
 
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#contact">Request Service</a>
@@ -599,8 +625,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
   <section id="services">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">The Skill Set</span>
-        <h2>Six Trades. One Family. Zero Guarantees About Anyone's Waistband.</h2>
+        <span class="kicker">Our Services</span>
+        <h2>If It's on Your List, It's on Ours.</h2>
       </div>
       <div class="services-grid">
         <div class="card">
@@ -608,28 +634,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M2 8.5a16 16 0 0 1 20 0M5.5 12a11 11 0 0 1 13 0M9 15.5a6 6 0 0 1 6 0"/><circle cx="12" cy="19" r="1.4" fill="#181410"/></svg>
           </div>
           <h3>Home Tech &amp; Wi-Fi</h3>
-          <p>Video doorbells, smart locks, thermostats, mesh wifi, and the laptop that won't connect to anything. Networking, device setup, and dead-zone hunting — we'll get your house and your gadgets talking again.</p>
+          <p>Video doorbells, smart locks, thermostats, mesh Wi-Fi, and computer connectivity. Home networking, device setup, and coverage troubleshooting so every room stays connected.</p>
         </div>
         <div class="card">
           <div class="icon">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-4l2-5h14l2 5v4h-2M5 13h14"/><circle cx="7.5" cy="17" r="1.5"/><circle cx="16.5" cy="17" r="1.5"/><path d="M9 17h6"/></svg>
           </div>
           <h3>Auto Repair</h3>
-          <p>Brakes, batteries, fluids, belts, and that noise you've been ignoring for three weeks. Routine maintenance and honest diagnostics — minus the upsell. Bigger jobs get referred to a trusted shop.</p>
+          <p>Brakes, batteries, fluids, and belts. Routine maintenance and honest diagnostics with no upselling. Larger repairs are referred to a trusted local shop.</p>
         </div>
         <div class="card">
           <div class="icon">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.8 2.8-2-2z"/></svg>
           </div>
           <h3>Construction</h3>
-          <p>The whole home-improvement umbrella: carpentry, minor plumbing and electrical, drywall, furniture assembly, and installs. If it's broken, bent, or built wrong, we'll square it away. Licensed pros for anything bigger — no shortcuts on safety.</p>
+          <p>Carpentry, minor plumbing and electrical, drywall, furniture assembly, and installations. Repairs and improvements completed to a high standard, with licensed professionals brought in for larger work. We never cut corners on safety.</p>
         </div>
+        <div class="card">
+          <div class="icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#181410" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>
+          </div>
+          <h3>Everything Else</h3>
+          <p>Hanging pictures and shelves, moving heavy furniture, mounting TVs, clearing gutters, fixing a squeaky door. If it's on your to-do list, ask us. No job is too small or too unusual.</p>
+        </div>
+      </div>
+
+      <div class="plan" id="maintenance">
+        <span class="advisor-badge">Maintenance Service</span>
+        <h3>Ongoing Home &amp; Household Care</h3>
+        <p>Stay ahead of repairs instead of reacting to them. We'll keep your home, vehicles, and technology in good working order on a regular schedule, so small issues get caught before they become expensive ones.</p>
+        <ul class="plan-list">
+          <li><strong>Seasonal Home Check-Ups</strong>Smoke and CO detectors, HVAC filters, gutters, caulking, and weatherproofing.</li>
+          <li><strong>Vehicle Maintenance</strong>Scheduled reminders and routine service for fluids, brakes, batteries, and tires.</li>
+          <li><strong>Annual Tech Tune-Up</strong>Wi-Fi performance, device updates, smart-home setup, and backups.</li>
+          <li><strong>Monthly Service Hours</strong>A set block of time each month to use on anything on your list.</li>
+        </ul>
+        <p class="plan-note">Plans are tailored to your home. Use the request form below and mention the maintenance service to get started.</p>
       </div>
 
       <div class="advisor">
         <span class="advisor-badge">Also Available</span>
         <h3>Bring Backup to the Estimate</h3>
-        <p>Getting a quote from another contractor? Have one of us there when they walk the job. A second set of trained eyes on the scope, the price, and the "you'll want to replace the whole thing" pitch — so you know what's actually necessary before you sign anything. No sales quota, no cut of their job. Just someone in your corner who's held the same tools.</p>
+        <p>Getting a quote from another contractor? Have one of us there when they walk the job. A second set of trained eyes on the scope, the price, and any recommended replacements, so you know what's actually necessary before you sign anything. We have no sales quota and take no cut of their job. You get an independent opinion from someone who does this work.</p>
       </div>
     </div>
   </section>
@@ -637,34 +683,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
   <section class="about" id="about">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">A Message From Your Handyman</span>
-        <h2>Behind the Name</h2>
+        <span class="kicker">About Us</span>
+        <h2>A Family Business</h2>
       </div>
       <div class="about-grid">
         <div class="about-copy">
-          <p>It started with me. Turns out I'm a polymath — genuinely good at home tech, auto repair, and every corner of the construction trades, and, apparently, exposing my lower back to the neighborhood no matter what I'm doing. Bending down. Standing up. Simply existing near a tool belt. It happens.</p>
-          <p>Then my sons started working alongside me, and it turns out the trait runs in the family. All of us. Every job. I've made peace with it.</p>
-          <p>What you actually get: plenty of hands, real skill across six trades, fair pricing, and a team that shows up on time and finishes the job right — with the kind of good humor you need when it's not just one guy bending over, but the whole crew, in a row, doing the exact same thing.</p>
+          <p>Crack of All Trades is a father-and-sons team with hands-on experience in home technology, auto repair, and the construction trades. Instead of calling a different contractor for every job, you can call one team that handles all of it.</p>
+          <p>We treat every home like our own. We arrive on time, communicate clearly, keep the work area clean, and stand behind what we do.</p>
+          <p>What you can expect: skilled work on whatever's on your list, fair and transparent pricing, and a team that finishes the job right.</p>
         </div>
         <div class="stamp-panel">
-          <h3>Field Credentials</h3>
+          <h3>At a Glance</h3>
           <ul class="badge-list">
-            <li><span>Crew</span><span class="status">Father &amp; Sons</span></li>
-            <li><span>Trades mastered</span><span class="status">6</span></li>
-            <li><span>The lineup</span><span class="status">Home tech &middot; Auto &middot; Carpentry &middot; Plumbing &middot; Electrical &middot; Drywall</span></li>
+            <li><span>Crew</span><span class="status">JR, Parker, and Gavin</span></li>
+            <li><span>Job size</span><span class="status">Big, small &amp; everything between</span></li>
+            <li><span>Services</span><span class="status">Home tech &middot; Auto &middot; Construction &middot; Odd jobs &middot; Maintenance</span></li>
             <li><span>Punctuality</span><span class="status">Reliable</span></li>
-            <li><span>Sense of humor</span><span class="status">Mandatory</span></li>
-            <li><span>Waistband compliance</span><span class="status">A family tradition</span></li>
+            <li><span>Pricing</span><span class="status">Upfront &amp; transparent</span></li>
+            <li><span>Ownership</span><span class="status">Family-owned &amp; local</span></li>
           </ul>
         </div>
       </div>
 
       <div class="creed">
-        <span class="creed-badge">Where We Stand</span>
+        <span class="creed-badge">Our Commitment</span>
         <h3>A Commitment to the Neighborhood</h3>
-        <p>A handshake ought to mean something. We think neighbors should be able to trust the people they let into their homes — and trust each other to point them toward folks who do right by them.</p>
+        <p>Homeowners should be able to trust the people they let into their homes. We work to earn that trust on every job and to be a business our neighbors are comfortable recommending.</p>
         <p>We show up when we say we will, quote what the job actually costs, and tell you plainly when something isn't worth fixing. No scare tactics, no padded invoices, no work you didn't ask for.</p>
-        <p>And when someone's running a hustle on this town — cutting corners, preying on people who don't know better, disappearing with a deposit — we're not going to look the other way. That kind of thing has no business here, and we'll happily help see it run out.</p>
+        <p>We believe in holding our trade to a high standard. If you've had a bad experience with another contractor, we're glad to take a look and give you an honest assessment.</p>
       </div>
     </div>
   </section>
@@ -689,7 +735,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
               <input id="phone" name="phone" type="tel" value="<?= htmlspecialchars($phone) ?>">
             </div>
             <div class="field">
-              <label for="job">What needs fixing?</label>
+              <label for="job">What's on your list?</label>
               <textarea id="job" name="job" required><?= htmlspecialchars($job) ?></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Send Request</button>
@@ -703,7 +749,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
             <li><strong>Phone</strong>916.999.9417</li>
             <li><strong>Email</strong>hello@crackofalltrades.com</li>
             <li><strong>Service Area</strong>Cameron Park &amp; surrounding areas</li>
-            <li><strong>Hours</strong>Mon–Sat, 8AM–6PM</li>
+            <li><strong>Hours</strong>24 hours a day, 7 days a week</li>
           </ul>
         </div>
       </div>
@@ -713,7 +759,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['quote_form'])) {
 
 <footer>
   <div class="foot-brand">CRACK OF ALL TRADES</div>
-  <div>&copy; 2026 Crack of All Trades. All jokes intentional. Not affiliated with any vault, bureau, or wasteland.</div>
+  <div>&copy; 2026 Crack of All Trades. All rights reserved.</div>
 </footer>
 
 </body>
